@@ -2,25 +2,33 @@
 {% load static %}
 
 {% block content %}
+<head>
+    <link rel="stylesheet" href="/static/css/restaurant.css">
+</head>
 <!-- 1. 사용자 정보 -->
 <!-- 2. 리뷰 입력한 맛집 (버튼)-->
 <!-- 3. 내 입력한 리뷰(버튼) -->
+<div class="myPageContainer">
 <h2>My Page</h2>
-<div class="">
-    <p>My detail</p>
-    <p>username : {{form.username.value}} </p> 
-    <p>useremail :{{form.useremail.value}}  </p>     
+<div>
+    <div class="myIMG" >
+        <img class="profile" src="img1.jpeg">
+    </div>
+<div class="myExplain" >
+    <p >username : {{form.username.value}} </p>
+<!--   <p>useremail :{{form.useremail.value}}  </p>    --> 
     <br/>
 </div>
-<div>
+</div>
+<div class ="myResList">
     <h4>My restaurant list</h4>
         <!--바로가기-->
 </div>
-<div>
+<div class="myResReview">
     <h4>My Review</h4><!--링크?버튼?바로가기-->
         
     
 </div>
 
-
+</div>
 {% endblock %}
