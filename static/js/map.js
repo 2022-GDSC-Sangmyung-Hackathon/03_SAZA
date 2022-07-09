@@ -29,9 +29,25 @@ function fnGetCurrentPosition() {
               map: map,
               icon: myIcon
           });
-      
-          console.log(lat);
-          console.log(lng);
+            //AJAX 맞는진 모르겟다리
+            data = {
+                'user_lat' : lat,
+                'user_lng' : lng
+            };
+            $.ajax({
+                type:'POST',
+                url:'',
+                data: JSON.stringify(data),
+                success: function(json){
+                    console.log('data pass success');
+                },
+                error: function(json){
+                    console.log('data pass failed');
+                },
+                complete: function(json){
+                    console.log('complete');
+                }
+            });
           },function(error)
       {
           switch(error.code)

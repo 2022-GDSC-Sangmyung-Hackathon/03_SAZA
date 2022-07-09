@@ -1,0 +1,104 @@
+
+/* login.html */
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.container form{
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.IDPW{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.login_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 50px;
+    width: 60%;
+    height: 400px;
+    background-color: #FEEDEF;
+}
+
+.login_container input{
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+    border: 0.1px solid rgb(224, 224, 224);
+    box-shadow: 2px 2px 2px 1px rgba(157, 156, 156, 0.2);
+
+}
+
+.user_name, .password{
+    display: flex;
+    flex-direction: column;
+}
+
+.password{
+    padding-top: 20px;
+}
+
+.login_bt_wrap{
+    padding-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#find_idpw_bt{
+    width: 45%;
+    height: 45px;
+    background-color: white;
+    border: 0.1px solid rgb(224, 224, 224);
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 1px rgba(157, 156, 156, 0.2);
+}
+
+#login_main_bt{
+    width: 45%;
+    height: 45px;
+    background-color: #18A67E;
+    border: 0.1px solid rgb(224, 224, 224);
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 1px rgba(157, 156, 156, 0.2);
+
+}
+
+#signup_create_btn{
+    width:100%;
+    height:60px;
+    font-size:100%;
+    margin-top: 30px;
+    border-radius: 10px;
+}
+
+#find_id_btn{
+    width:100%;
+    height:60px;
+    font-size:100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+#find_pw_btn{
+    width:100%;
+    height:60px;
+    font-size:100%;
+    margin-top: 30px;
+}
