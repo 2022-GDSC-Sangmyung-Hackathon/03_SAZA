@@ -1,3 +1,27 @@
+.navbar{
+    height: 90px;
+}
+
+.navbar-brand{
+    height: 90px;
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar-logo-img img{
+    width: 75px;
+    height: 70px;
+}
+
+.navbar-logo-text{
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+.navbar-logo-text img{
+    width: 180px;
+    height: 35px;
+}
 
 /* login.html */
 .container{
