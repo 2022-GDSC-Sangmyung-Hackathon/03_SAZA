@@ -114,7 +114,6 @@ body{
     margin: 0 auto;
 }
 
-<<<<<<< HEAD
 /* mypage.html */
 .myPageContainer{
 box-sizing: border-box;
@@ -240,7 +239,7 @@ float: left;
     padding-right: 20%;
     padding-left: 20%;
 }
-=======
+
 #check_location{
     margin-top: 40px;
     display: flex;
