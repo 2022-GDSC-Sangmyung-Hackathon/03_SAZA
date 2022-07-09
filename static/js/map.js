@@ -36,7 +36,7 @@ function fnGetCurrentPosition() {
             };
             $.ajax({
                 type:'POST',
-                url:'',
+                url:'{% url "restaurant/get_current_coordinate" %}',
                 data: JSON.stringify(data),
                 success: function(json){
                     console.log('data pass success');
