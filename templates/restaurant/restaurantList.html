@@ -4,16 +4,20 @@
 
 <body>
     <div class="main_content">
-        <!-- 사용자 위치를 보여줍니다. -->
-        <div class="content_title">
-            <div class="user_location_title"><h3>사용자 위치</h3></div>
-            <div class="user_location_content">상명대학교 서울캠퍼스</div>
-        </div>
-
-        <!-- 사용자 지도 -->
-        <div id="map" style="width: 50%; height: 400px;"></div>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCl9B1sHmutiLWvxlz0ma-Dz_gCths3jkk&callback=initMap&region=kr" type="text/javascript"></script>
-    
+        <div id="check_location">
+            <div id="check_location_logo"><img src="#"></div>
+            <div id="location_question">당신의 위치를 확인하세요.</div>
+            <div id="location_button">
+                <input type="button" value="내 위치 표시하기" onclick="Javascript:fnGetCurrentPosition();" />
+            </div>
+            </div>
+            <div id="result_location" style="display: none;">
+                <div id="map" style="width:100%; ;height:400px;margin-top:20px;"></div>
+                <div id="errormsg"></div>
+                <div id="latlng"></div>
+            </div>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCl9B1sHmutiLWvxlz0ma-Dz_gCths3jkk" type="text/javascript"></script>
+            
         <!-- 맛집 리스트 -->
         <div class="restaurant_list_box">
             <ul class="restaurant_list_content">

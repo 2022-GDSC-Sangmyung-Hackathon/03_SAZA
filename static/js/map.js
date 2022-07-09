@@ -1,21 +1,60 @@
-var map;
-var button = document.getElementById('map_button');
+function fnGetCurrentPosition() {
+  $('#result_location').css('display', 'block');
+  $('#check_location').css('display', 'none');
+  $('.restaurant_list_box').css('display', 'block');
+  if (navigator.geolocation)
+  {
+      $("#latlng").html("");
+      $("#errormsg").html("");
+      navigator.geolocation.getCurrentPosition (function (pos)
+      {
+          lat = pos.coords.latitude;
+          lng = pos.coords.longitude;
 
-function initMap() {
-  //지도 중심 좌표 입력
-  var gyeongbokgung = { lat: 37.57979553563185, lng: 126.97706245552442 };
-  map = new google.maps.Map( document.getElementById('map'), {
-      zoom: 15,
-      center: gyeongbokgung
-    });
-  //이곳에 사용자 위치를 넣어주면 됨
-  var MarkerPoint = { lat: 37.57956596361732, lng: 126.9803240214433};
-  var Marker = new google.maps.Marker({
-      position: MarkerPoint,
-      map: map,
-      label: "내 위치",
-      icon: {
-        url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
-      }
-    });
+          $("#latlng").html("위도 : " + lat + " 경도 : "+ lng);
+
+          var mapOptions = {
+              zoom: 16,
+              mapTypeId: google.maps.MapTypeId.ROADMAP,
+              center: new google.maps.LatLng(lat, lng)
+          };
+
+          map = new google.maps.Map(document.getElementById('map'),mapOptions);
+          var myIcon = {
+              url: "mapmarker.png", // url
+              scaledSize: new google.maps.Size(50, 50), // scaled size
+          };
+          var marker = new google.maps.Marker({
+              position: new google.maps.LatLng(lat,lng),
+              map: map,
+              icon: myIcon
+          });
+      
+          console.log(lat);
+          console.log(lng);
+          },function(error)
+      {
+          switch(error.code)
+          {
+              case 1:
+                  $("#errormsg").html("User denied the request for Geolocation.");
+                  break;
+              case 2:
+                  $("#errormsg").html("Location information is unavailable.");
+                  break;
+              case 3:
+                  $("#errormsg").html("The request to get user location timed out.");
+                  break;
+              case 0:
+                  $("#errormsg").html("An unknown error occurred.");
+                  break;
+          }
+      });
+  }
+  else
+  {
+      $("#errormsg").html("Geolocation is not supported by this browser.");
+  }
 }
+
+
