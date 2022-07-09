@@ -7,6 +7,7 @@ from restaurant.register_functions.load_restaurants import load_restaurants_csv
 from restaurant.register_functions.load_reviews import get_reviews
 from restaurant.distance_functions.cal_distance import get_distance, check_1km
 from django.views.decorators.csrf import csrf_exempt
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
 import random
 import googlemaps
@@ -95,10 +96,29 @@ def get_current_coordinate(request):
     return render(request, 'restaurant/restaurantList.html', context)
 
 
+class ResList(ListView):
+    model = Restaurant
+
+    template_name = 'restaurant/myRestaurants.html'
 
 
+class ResDetail(DetailView):
+    model = Restaurant
+
+    template_name = 'restaurant/detailReview.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(ResDetail, self).get_context_data()
+        context['review_form'] = ReviewForm
+        return  context
+
+def index(request):
+    return render(request, 'restaurant/index.html')
 
 
-
+def myRestaurants(request):
+    return render(request, 'restaurant/myRestaurants.html')
+def Restaurantlist(request):
+    return render(request, 'restaurant/restaurantList.html')
 
 

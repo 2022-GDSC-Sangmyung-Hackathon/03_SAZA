@@ -28,7 +28,3 @@ def inputReview(request):
     return render(request, 'restaurant/inputReview.html')
 def mypage(request):
     return render(request, 'restaurant/mypage.html')
-def myRestaurants(request):
-    return render(request, 'restaurant/myRestaurants.html')
-def Restaurantlist(request):
-    return render(request, 'restaurant/restaurantList.html')

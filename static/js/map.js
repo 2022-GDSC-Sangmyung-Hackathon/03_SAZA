@@ -1,4 +1,8 @@
 function GpsGetCurrentPosition(){
+    $('#check_location').css('display', 'none');
+    $('#result_location').css('display', 'block');
+    $('.restaurant_list_box').css('display', 'block');
+
     if (navigator.geolocation)
     {
         $("#latlng").html("");
@@ -11,6 +15,26 @@ function GpsGetCurrentPosition(){
                 'user_lat' : lat,
                 'user_lng' : lng
             };
+
+            $("#latlng").html("위도 : " + lat + ", 경도 : "+ lng);
+  
+            var mapOptions = {
+                zoom: 16,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                center: new google.maps.LatLng(lat, lng)
+            };
+  
+            map = new google.maps.Map(document.getElementById('map'),mapOptions);
+            var myIcon = {
+                url: "mapmarker.png", // url
+                scaledSize: new google.maps.Size(50, 50), // scaled size
+            };
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(lat,lng),
+                map: map,
+                icon: myIcon
+            });
+            
             $.ajax({
                 type:'POST',
                 url:'',
