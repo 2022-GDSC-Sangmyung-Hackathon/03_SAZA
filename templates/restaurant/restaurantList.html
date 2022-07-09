@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<body>
+    <div class="main_content">
+        <!-- 사용자 위치를 보여줍니다. -->
+        <div class="content_title">
+            <div class="user_location_title"><h3>사용자 위치</h3></div>
+            <div class="user_location_content">상명대학교 서울캠퍼스</div>
+        </div>
+
+        <!-- 사용자 지도 -->
+        <div id="map" style="width: 50%; height: 400px;"></div>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCl9B1sHmutiLWvxlz0ma-Dz_gCths3jkk&callback=initMap&region=kr" type="text/javascript"></script>
+    
+        <!-- 맛집 리스트 -->
+        <div class="restaurant_list_box">
+            <ul class="restaurant_list_content">
+                <li class="restaurant_list">
+                    <a href="#" id="list1" class="restaurant_detail">
+                        <div class="restaurant_name">첫 번째 맛집 리스트</div>
+                        <div class="restaurant_address">상명대학교 서울캠퍼스</div>
+                    </a>
+                    <a href="#" id="list2" class="restaurant_detail">
+                        <div class="restaurant_name">두 번째 맛집 리스트</div>
+                        <div class="restaurant_address">상명대학교 서울캠퍼스</div>
+                    </a>
+                    <a href="#" id="list3" class="restaurant_detail">
+                        <div class="restaurant_name">세 번째 맛집 리스트</div>
+                        <div class="restaurant_address">상명대학교 서울캠퍼스</div>
+                    </a>
+                    <a href="#" id="list4" class="restaurant_detail">
+                        <div class="restaurant_name">네 번째 맛집 리스트</div>
+                        <div class="restaurant_address">상명대학교 서울캠퍼스</div>
+                    </a>
+                    <a href="#" id="list5" class="restaurant_detail">
+                        <div class="restaurant_name">다섯 번째 맛집 리스트</div>
+                        <div class="restaurant_address">상명대학교 서울캠퍼스</div>
+                    </a>
+                    <a href="#" id="list6" class="restaurant_detail">
+                        <div class="restaurant_name">여섯 번째 맛집 리스트</div>
+                        <div class="restaurant_address">상명대학교 서울캠퍼스</div>
+                    </a>
+                    <a href="#" id="list7" class="restaurant_detail">
+                        <div class="restaurant_name">일곱 번째 맛집 리스트</div>
+                        <div class="restaurant_address">상명대학교 서울캠퍼스</div>
+                    </a>
+                    <a href="#" id="list8" class="restaurant_detail">
+                        <div class="restaurant_name">여덟 번째 맛집 리스트</div>
+                        <div class="restaurant_address">상명대학교 서울캠퍼스</div>
+                    </a>
+                    <a href="#" id="list9" class="restaurant_detail">
+                        <div class="restaurant_name">아홉 번째 맛집 리스트</div>
+                        <div class="restaurant_address">상명대학교 서울캠퍼스</div>
+                    </a>
+                    <a href="#" id="list10" class="restaurant_detail">
+                        <div class="restaurant_name">열 번째 맛집 리스트</div>
+                        <div class="restaurant_address">상명대학교 서울캠퍼스</div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+{% endblock %}

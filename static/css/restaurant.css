@@ -1,0 +1,26 @@
+.restaurant_list_box{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.restaurant_list_content{
+    display: flex;
+    flex-direction: column;
+}
+
+.restaurant_list_box > ul{
+    list-style: none;
+}
+
+.restaurant_list_content > ul > li > div{
+    color: black;
+}
+
+.restaurant_list{
+    display: flex;
+    flex-direction: column;
+}
+
