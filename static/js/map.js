@@ -20,15 +20,13 @@ function GpsGetCurrentPosition(){
             };
   
             map = new google.maps.Map(document.getElementById('map'),mapOptions);
-            var myIcon = {
-                url: "static/img/mapmarker.png",
-                scaledSize: new google.maps.Size(50, 50), // scaled size
-            };
             var marker = new google.maps.Marker({
                 position: new google.maps.LatLng(lat,lng),
-                map: map,
-                icon: myIcon
+                map: map
             });
+            
+            var map = new naver.maps.Map('map', mapOptions);
+
             console.log(lat);
             console.log(lng);
             

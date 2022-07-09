@@ -15,3 +15,6 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, 'accounts/signup.html', {'form': form})
+
+def findPw(request):
+    return render(request, 'accounts/FindIdPw.html')

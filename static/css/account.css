@@ -34,7 +34,7 @@
     background-color: #FEF6F7;
     padding: 20px;
     box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.4);
-    height: 340px;
+    height: 400px;
 }
 
 .signup_container{
@@ -50,7 +50,6 @@
 .findidpw_container{
     margin: 0 auto;
     border-radius: 10px;
-    max-width: 1000px;
     font-size:120%;
     padding:75px;
     width:60%;
@@ -71,7 +70,7 @@
     box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.4);
     border-radius: 10px;
     border: none;
-    background-color: #FEF6F7;
+    background-color: #fdfdfdea;
     color: #1f1f1f;
     font-weight: bold;
     font-size: 100%;
@@ -91,7 +90,7 @@
 }
 
 #label{
-    padding-left: 20px;
+    padding-left: 50px;
 }
 
 #signup_label{
@@ -161,7 +160,6 @@
     font-size:100%;
     margin-top: 30px;
     margin-left: 58px;
-
     background-color: #F2D884;
     box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.4);
     border-radius: 10px;

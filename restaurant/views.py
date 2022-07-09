@@ -11,6 +11,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
 import random
 import googlemaps
+from review.forms import ReviewForm
 
 googlemaps_key = "AIzaSyCfvx6iYQVGdPer3AqofpSB-jAKnw_PoVE"
 gmaps = googlemaps.Client(key=googlemaps_key)

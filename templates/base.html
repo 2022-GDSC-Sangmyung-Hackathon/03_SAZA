@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="/static/css/account.css">
 
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ko.min.js" integrity="sha512-L4qpL1ZotXZLLe8Oo0ZyHrj/SweV7CieswUODAAPN/tnqN3PA1P+4qPu5vIryNor6HQ5o22NujIcAZIfyVXwbQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="/static/js/map.js"></script>
 
@@ -32,13 +31,13 @@
 <body>
     <nav class="navbar">
           <div class="navbar-wrap">
-            <div class="navbar-logo-img"><img src="{%static 'img/mainLogo.png' %}"></div>
-            <div class="navbar-logo-text"><img src="{%static 'img/logoText.png' %}"></div>
+            <div class="navbar-logo-img"><img src="{%static 'img/mainLogo.png' %}" onclick="location.href='/restaurantList'"></div>
+            <div class="navbar-logo-text"><img src="{%static 'img/logoText.png' %}" onclick="location.href='/restaurantList'"></div>
           </div>
               <div class="navbar-nav">
                   {% if user.is_authenticated %}
                   <span class="navbar-text">
-                      {{ request.user.username }}님, 환영합니다.
+                      <U onclick="location.href='/mypage'">{{ request.user.username }}</U>님, 환영합니다.
                   </span>
   
                   <a class="nav-link" href="{% url 'accounts:logout' %}">로그아웃</a>
