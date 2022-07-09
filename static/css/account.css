@@ -2,104 +2,173 @@
 .IDPW{
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 110%;
     margin: 0 auto;
     margin-top: 60px;
+    padding-left: 10%;
 }
 
 .login_container{
     margin: 0 auto;
-    border: 1px solid black;
     border-radius: 10px;
     max-width: 1000px;
     font-size:120%;
     padding-bottom:75px;
-    width:80%;
+    width:500px;
+    margin-left: 28%;
+    background-color: #FEF6F7;
+    box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.4);
+    height: 340px;
+
 }
 
 
 .signup_container{
     margin: 0 auto;
-    border: 1px solid black;
     border-radius: 10px;
     max-width: 1000px;
     font-size:120%;
     padding: 75px;
-    width:80%;
+    width:65%;
+    margin-left: 24%;
 }
 
 .findidpw_container{
     margin: 0 auto;
-    border: 1px solid black;
     border-radius: 10px;
     max-width: 1000px;
     font-size:120%;
-    padding-left: 75px;
-    padding-right: 75px;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    width: 71%;
-
+    padding:75px;
+    width:60%;
+    padding-left: 13%;
 }
 
 .login_bt_wrap{
     margin: 0 auto;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     width: 80%;
     height: 60px;
 }
 
 #find_idpw_bt{
-    width:45%;
+    width: 70%;
+    box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    border: none;
+    background-color: #FEF6F7;
+    color: #1f1f1f;
+    font-weight: bold;
+    font-size: 100%;
 }
 
 #login{
-    width: 45%;
+    width:70%;
+    box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    border:none;
+    margin-left: 10%;
+    background-color: #18A67E;
+    color: #1f1f1f;
+    font-weight: bold;
+    font-size: 100%;
 }
 
 #username{
     height:60px;
     font-size: 100%;
-    width: 100%;
+    width: 80%;
+    box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
 }
 #password{
     height:60px;
     font-size: 100%;
+    width: 80%;
+    box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
 }
 #password1{
     height:60px;
+    width: 80%;
     font-size: 100%;
+    box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
 }
 #password2{
     height:60px;
+    width: 80%;
     font-size: 100%;
+    box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
 }
 #email{
     height:60px;
+    width: 80%;
     font-size: 100%;
+    box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
 }
 
-
+#label{
+    font-weight:bold;
+}
 
 #signup_create_btn{
-    width:100%;
+    border:none;
+    color: #1f1f1f;
+    border-radius: 15px;
+    width:80%;
     height:60px;
     font-size:100%;
     margin-top: 30px;
+    background-color: #F2D884;
+    box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    font-weight: bold;
 }
 
 #find_id_btn{
-    width:100%;
+    width:80%;
     height:60px;
     font-size:100%;
     margin-top: 30px;
     margin-bottom: 30px;
+    box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    background-color: #F2D884;
+    border:none;
+    color: #1f1f1f;
+    font-weight:bold;
+
 }
 #find_pw_btn{
-    width:100%;
+    width:80%;
     height:60px;
     font-size:100%;
     margin-top: 30px;
+    box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    background-color: #F2D884;
+    border:none;
+    color: #1f1f1f;
+    font-weight:bold;
+}
+
+h1{
+    font-weight: bold;
+}
+h2{
+    font-weight: bold;
 }

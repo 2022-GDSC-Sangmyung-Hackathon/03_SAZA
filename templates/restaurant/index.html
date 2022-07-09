@@ -9,10 +9,16 @@
 <h1>메인화면</h1>
 <hr/>
     <div class="index_container my-3">
-        <img id = logoimg src="./../../static/img/logo.png" alt="Logo">
-        <div class = indexbutton>
-            <button id = "login_btn" type="submit" class="btn btn-primary">로그인</button>
-            <button id = "signup_btn" type="submit" class="btn btn-primary mt-3">회원가입</button>
+        <img id = logoimg src="./../../static/img/logo.png" alt="Logo" style = "float: left">
+        <div class = "indexbutton">
+            <button id = "login_btn" type="submit" class="btn btn-primary" onclick = "location.href='/accounts/login/'">로그인</button>
+            <button id = "signup_btn" type="submit" class="btn btn-primary mt-3" onclick = "location.href='/accounts/signup/'">회원가입</button>
+            <div class = "service_name">
+            <p id = "hidden_review">Hidden Review</p>
+            <p id = "here_eat">Here,EAT</p>
+            </div>
         </div>
+        
     </div>
+    
 {% endblock %}
