@@ -1,5 +1,7 @@
 function fnGetCurrentPosition() {
+  $('#result_location').css('display', 'block');
   $('#check_location').css('display', 'none');
+  $('.restaurant_list_box').css('display', 'block');
   if (navigator.geolocation)
   {
       $("#latlng").html("");
@@ -14,26 +16,23 @@ function fnGetCurrentPosition() {
           var mapOptions = {
               zoom: 16,
               mapTypeId: google.maps.MapTypeId.ROADMAP,
-              center: new google.maps.LatLng(lat,lng)
+              center: new google.maps.LatLng(lat, lng)
           };
 
           map = new google.maps.Map(document.getElementById('map'),mapOptions);
           var myIcon = {
               url: "mapmarker.png", // url
               scaledSize: new google.maps.Size(50, 50), // scaled size
-              origin: new google.maps.Point(0,0), // origin
-              anchor: new google.maps.Point(0, 0) // anchor
           };
           var marker = new google.maps.Marker({
               position: new google.maps.LatLng(lat,lng),
               map: map,
-              draggable: false,
               icon: myIcon
           });
-          markers.push(marker);
+      
           console.log(lat);
           console.log(lng);
-      },function(error)
+          },function(error)
       {
           switch(error.code)
           {
@@ -57,4 +56,5 @@ function fnGetCurrentPosition() {
       $("#errormsg").html("Geolocation is not supported by this browser.");
   }
 }
+
 
