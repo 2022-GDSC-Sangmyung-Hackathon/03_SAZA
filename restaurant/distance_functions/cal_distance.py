@@ -5,7 +5,7 @@ def get_distance(current, destination):
 
 def check_1km(distance):
     if (distance > 0.01):
-        False
+        return False
     else:
-        True
+        return True
 
