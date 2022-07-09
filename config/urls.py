@@ -22,4 +22,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
     path('detail/', views.add_review),
+    path('mypage/', views.mypage),
+    path('detailreview/', views.detailReview),
+    path('index/', views.index),
+    path('inputReview/', views.inputReview),
+    path('myrestaurants/', views.myRestaurants),
+    path('restaurantlist/', views.Restaurantlist),
 ]
