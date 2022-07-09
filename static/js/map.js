@@ -17,6 +17,7 @@ function GpsGetCurrentPosition(){
                 data: JSON.stringify(data),
                 success: function(json){
                     console.log('data pass success');
+                    location.href='./templates/restaurantList.html'
                 },
                 error: function(json){
                     console.log('data pass failed');

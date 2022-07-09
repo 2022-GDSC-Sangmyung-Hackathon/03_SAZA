@@ -3,6 +3,16 @@
     width: 100%;
 }
 
+.navbar-nav{
+    display: flex;
+    flex-direction: row;
+    width: 230px;
+}
+
+.navbar-nav a{
+    margin-left: 10px;
+}
+
 .navbar-wrap{
     height: 90px;
     display: flex;
@@ -75,5 +85,6 @@
 .footer_front_member, .footer_back_member{
     padding-right: 15px;
 }
+
 
 
