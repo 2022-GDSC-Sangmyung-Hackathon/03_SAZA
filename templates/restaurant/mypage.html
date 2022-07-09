@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!-- 1. 사용자 정보 -->
+<!-- 2. 리뷰 입력한 맛집 (버튼)-->
+<!-- 3. 내 입력한 리뷰(버튼) -->
+<h2>My Page</h2>
+<div class="">
+    <p>My detail</p>
+    <p>username : {{form.username.value}} </p> 
+    <p>useremail :{{form.useremail.value}}  </p>     
+    <br/>
+</div>
+<div>
+    <h4>My restaurant list</h4>
+        <!--바로가기-->
+</div>
+<div>
+    <h4>My Review</h4><!--링크?버튼?바로가기-->
+        
+    
+</div>
+
+
+{% endblock %}
