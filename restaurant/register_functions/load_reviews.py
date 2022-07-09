@@ -1,68 +1,24 @@
-from restaurant.models import Restaurant
-
-from bs4 import BeautifulSoup
-import requests
-from urllib.request import urlopen
-import json
-import time
 from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException
-from selenium.common.exceptions import ElementNotVisibleException
+from time import sleep
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait as wait
 
-driver = webdriver.Chrome('./chromedriver')
-driver.implicitly_wait(3)
+# --크롬창을 숨기고 실행-- driver에 options를 추가해주면된다
+# options = webdriver.ChromeOptions()
+# options.add_argument('headless')
 
-naver_url = "https://map.naver.com/"
-driver.get(naver_url)
+def get_reviews(dong, name): 
+    url = 'https://map.naver.com/v5/search'
+    driver = webdriver.Chrome('restaurant/register_functions/chromedriver')
+    query = dong + " " + name
+    driver.get(f"https://map.naver.com/v5/search/{query}?c=14203933.7141038,4562681.4505997,10,0,0,0,dh")
 
-rs = Restaurant.objects.all()
+    sleep(3)
 
-for r in rs:
+    driver.switch_to.frame("entryIframe")
 
-    query = r.dong + r.name
-
-    driver.find_element_by_xpath('//*[@id="search-input"]').clear()
-    driver.find_element_by_xpath('//*[@id="search-input"]').send_keys(query)
-    driver.find_element_by_xpath('//*[@id="header"]/div[1]/fieldset/button').click()
-
-    try:
-    click = driver.find_element_by_xpath("//*[@id='panel']/div[2]/div[1]/div[2]/div[2]/ul/li[1]/div[1]/dl")
-    if store_name in click.text:
-        click.click()
-    else:
-        print("--해당음식점이 없습니다")
-        continue
-            
-    try:
-        driver.find_element_by_xpath("//*[@id='panel']/div[2]/div[1]/div[2]/div[2]/ul/li[1]/div[2]/ul/li[4]/a").click()
-    except ElementNotVisibleException:
-        driver.find_element_by_xpath("//*[@id='panel']/div[2]/div[1]/div[2]/div[2]/ul/li[1]/div[1]/dl").click()
-        driver.find_element_by_xpath("//*[@id='panel']/div[2]/div[1]/div[2]/div[2]/ul/li[1]/div[2]/ul/li[4]/a").click()
-        
+    visitor_reviews = driver.find_element(By.CSS_SELECTOR, "#app-root > div > div > div > div.place_section.GCwOh > div._3uUKd._2z4r0 > div._20Ivz > span:nth-child(2) > a > em").text
+    blog_reviews = driver.find_element(By.CSS_SELECTOR, "#app-root > div > div > div > div.place_section.GCwOh > div._3uUKd._2z4r0 > div._20Ivz > span:nth-child(3) > a > em").text
     
-except NoSuchElementException:
-    print('--검색결과가 없습니다')
-        
-    query2 = data2['hits'][i]['_source']['상호명']+" " + data2['hits'][i]['_source']['도로명주소'].split(' ')[1]
+    return visitor_reviews, blog_reviews
 
-    driver.find_element_by_xpath('//*[@id="search-input"]').clear()
-    driver.find_element_by_xpath('//*[@id="search-input"]').send_keys(query2)
-    driver.find_element_by_xpath('//*[@id="header"]/div[1]/fieldset/button').click()
-
-    try:
-        click = driver.find_element_by_xpath("//*[@id='panel']/div[2]/div[1]/div[2]/div[2]/ul/li[1]/div[1]/dl")
-        if store_name in click.text:
-            click.click()
-        else:
-            print("--해당음식점이 없습니다")
-            continue
-        
-        try:
-            driver.find_element_by_xpath("//*[@id='panel']/div[2]/div[1]/div[2]/div[2]/ul/li[1]/div[2]/ul/li[4]/a").click()
-        except ElementNotVisibleException:
-            driver.find_element_by_xpath("//*[@id='panel']/div[2]/div[1]/div[2]/div[2]/ul/li[1]/div[1]/dl").click()
-            driver.find_element_by_xpath("//*[@id='panel']/div[2]/div[1]/div[2]/div[2]/ul/li[1]/div[2]/ul/li[4]/a").click()
-
-    except NoSuchElementException:
-        print('--검색결과가 없습니다')
-        continue

@@ -1,6 +1,8 @@
+import json
 from django.shortcuts import render
 from restaurant.models import Restaurant
 from restaurant.register_functions.load_restaurants import load_restaurants_csv
+from restaurant.register_functions.load_reviews import get_reviews
 
 import googlemaps
 
@@ -28,8 +30,21 @@ def update_geo(request):
 
     print('지리 정보가 업데이트 되었습니다.')
 
+def update_reviews(request):
+
+    rs = Restaurant.objects.all()
+
+    for r in rs:
+        get_reviews(r.dong, r.name)
+
+def get_current_coordinate(request):
+    coordinate = json.load(request.body)
+    print(coordinate['user_lat'], coordinate['user_lng'])
+    return 
 
 
+def top_20_restaurants(request):
+    return 
 
 
 
