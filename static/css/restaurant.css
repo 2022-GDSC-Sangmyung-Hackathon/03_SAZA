@@ -247,7 +247,8 @@ float: left;
 }
 
 #check_location{
-    margin-top: 40px;
+    margin-top: 30px;
+    height: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -257,6 +258,7 @@ float: left;
     box-shadow: 7px 7px 7px 1px rgba(157, 156, 156, 0.2);
     padding: 200px 50px;
 }
+
 
 #location_question{
     font-size: 2.7rem;

@@ -2,11 +2,8 @@ function GpsGetCurrentPosition(){
     $('#check_location').css('display', 'none');
     $('#result_location').css('display', 'block');
     $('.restaurant_list_box').css('display', 'block');
-
     if (navigator.geolocation)
     {
-        $("#latlng").html("");
-        $("#errormsg").html("");
         navigator.geolocation.getCurrentPosition (function (pos)
         {
             lat = pos.coords.latitude; 
@@ -15,8 +12,6 @@ function GpsGetCurrentPosition(){
                 'user_lat' : lat,
                 'user_lng' : lng
             };
-
-            $("#latlng").html("위도 : " + lat + ", 경도 : "+ lng);
   
             var mapOptions = {
                 zoom: 16,
@@ -26,7 +21,7 @@ function GpsGetCurrentPosition(){
   
             map = new google.maps.Map(document.getElementById('map'),mapOptions);
             var myIcon = {
-                url: "mapmarker.png", // url
+                url: "static/img/mapmarker.png",
                 scaledSize: new google.maps.Size(50, 50), // scaled size
             };
             var marker = new google.maps.Marker({
@@ -34,6 +29,8 @@ function GpsGetCurrentPosition(){
                 map: map,
                 icon: myIcon
             });
+            console.log(lat);
+            console.log(lng);
             
             $.ajax({
                 type:'POST',
@@ -41,7 +38,6 @@ function GpsGetCurrentPosition(){
                 data: JSON.stringify(data),
                 success: function(json){
                     console.log('data pass success');
-                    location.href='./templates/restaurantList.html'
                 },
                 error: function(json){
                     console.log('data pass failed');
