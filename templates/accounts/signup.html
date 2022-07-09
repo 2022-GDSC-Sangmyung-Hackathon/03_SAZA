@@ -36,26 +36,6 @@
             </div>
             <button id = "signup_create_btn" type="submit" class="btn btn-primary">생성하기</button>
         </div>
-<<<<<<< HEAD
-=======
-        <div class="mb-3">
-            <label for="password1">비밀번호</label>
-            <input type="password" class="form-control" name="password1" id="password1"
-                   value="{{ form.password1.value|default_if_none:'' }}">
-        </div>
-        <div class="mb-3">
-            <label for="password2">비밀번호 확인</label>
-            <input type="password" class="form-control" name="password2" id="password2"
-                   value="{{ form.password2.value|default_if_none:'' }}">
-        </div>
-        <div class="mb-3">
-            <label for="email">이메일</label>
-            <input type="text" class="form-control" name="email" id="email"
-                   value="{{ form.email.value|default_if_none:'' }}">
-        </div>
-        <button type="submit" class="btn btn-primary">생성하기</button>
-        <button type="button" class="btn btn-primary" onclick="location.href='/accounts/login/'">로그인</button>
->>>>>>> 05e36bf4fea37a742b790847157e1fd00f6798c0
     </form>
 </div>
 {% endblock %}
