@@ -1,7 +1,4 @@
 function fnGetCurrentPosition() {
-  $('#result_location').css('display', 'block');
-  $('#check_location').css('display', 'none');
-  $('.restaurant_list_box').css('display', 'block');
   if (navigator.geolocation)
   {
       $("#latlng").html("");
@@ -21,7 +18,7 @@ function fnGetCurrentPosition() {
 
           map = new google.maps.Map(document.getElementById('map'),mapOptions);
           var myIcon = {
-              url: "mapmarker.png", // url
+              url: "../img/mapmarker.png", // url
               scaledSize: new google.maps.Size(50, 50), // scaled size
           };
           var marker = new google.maps.Marker({
