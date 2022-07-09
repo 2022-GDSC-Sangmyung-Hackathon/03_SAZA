@@ -30,13 +30,19 @@
 <body>
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container-fluid">
-          <a class="navbar-brand" href="">SAZA</a>
+          <div class="navbar-brand">
+            <div class="navbar-logo-img"><img src="{%static img/ %}"</div>
+          </div>
               <div class="navbar-nav">
                   {% if user.is_authenticated %}
                   <span class="navbar-text">
                       {{ request.user.username }}님, 환영합니다.
                   </span>
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> cd11da3aadf9a2fb24d2f0fae99f121f813aae14
   
   
                   <a class="nav-link" href="{% url 'accounts:logout' %}">로그아웃</a>
