@@ -1,0 +1,105 @@
+/* login.html */
+.IDPW{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 60px;
+}
+
+.login_container{
+    margin: 0 auto;
+    border: 1px solid black;
+    border-radius: 10px;
+    max-width: 1000px;
+    font-size:120%;
+    padding-bottom:75px;
+    width:80%;
+}
+
+
+.signup_container{
+    margin: 0 auto;
+    border: 1px solid black;
+    border-radius: 10px;
+    max-width: 1000px;
+    font-size:120%;
+    padding: 75px;
+    width:80%;
+}
+
+.findidpw_container{
+    margin: 0 auto;
+    border: 1px solid black;
+    border-radius: 10px;
+    max-width: 1000px;
+    font-size:120%;
+    padding-left: 75px;
+    padding-right: 75px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    width: 71%;
+
+}
+
+.login_bt_wrap{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+    height: 60px;
+}
+
+#find_idpw_bt{
+    width:45%;
+}
+
+#login{
+    width: 45%;
+}
+
+#username{
+    height:60px;
+    font-size: 100%;
+    width: 100%;
+}
+#password{
+    height:60px;
+    font-size: 100%;
+}
+#password1{
+    height:60px;
+    font-size: 100%;
+}
+#password2{
+    height:60px;
+    font-size: 100%;
+}
+#email{
+    height:60px;
+    font-size: 100%;
+}
+
+
+
+#signup_create_btn{
+    width:100%;
+    height:60px;
+    font-size:100%;
+    margin-top: 30px;
+}
+
+#find_id_btn{
+    width:100%;
+    height:60px;
+    font-size:100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+#find_pw_btn{
+    width:100%;
+    height:60px;
+    font-size:100%;
+    margin-top: 30px;
+}

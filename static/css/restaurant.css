@@ -26,9 +26,37 @@
 
 
 /* index.html */
+.index_container{
+    margin: 0 auto;
+    border: 1px solid black;
+    border-radius: 10px;
+    max-width: 1000px;
+    font-size:120%;
+    padding-bottom:75px;
+    height: 500px;
+    width:60%;
+}
+
 .indexbutton{
     display:flex;
     flex-direction: column;
-    width: 30%;
-    margin: 0 auto;
+}
+
+#logoimg{
+    height: 100%;
+    margin-top: 40px;
+}
+
+#login_btn{
+    width: 80%;
+    height: 80px;
+    font-size: 120%;
+    align-items: center;
+    margin-top:150px;
+}
+#signup_btn{
+    width: 80%;
+    height: 80px;
+    font-size: 120%;
+    align-items: center;   
 }
