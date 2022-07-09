@@ -55,7 +55,3 @@ function initMap() {
         $("#errormsg").html("Geolocation is not supported by this browser.");
     }
   }
-  
-window.onload(function(){
-    initMap();
-})
