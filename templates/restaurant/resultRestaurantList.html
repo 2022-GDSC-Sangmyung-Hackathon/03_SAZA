@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<body>
+    {% for r in top_10_restaurants %}
+    <p>{{ r.r }}</p>
+    <p>{{ r.latitude }}</p>
+    <p>{{ r.hardness }}</p>
+    {% endfor %}
+
+    <p>{{ user_lat }}</p>
+    <p>{{ user_lng }}</p>
+</body>
+
+{% endblock %}

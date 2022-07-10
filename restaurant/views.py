@@ -1,26 +1,34 @@
 import json
+from multiprocessing import context
+import re
 from time import sleep
-from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.shortcuts import redirect, render
+from django.urls import reverse
 from numpy import append
-from restaurant.models import Restaurant
+from restaurant.models import Restaurant, TOP_10_RES
 from restaurant.register_functions.load_restaurants import load_restaurants_csv
 from restaurant.register_functions.load_reviews import get_reviews
 from restaurant.distance_functions.cal_distance import get_distance, check_1km
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic.detail import DetailView
+
 
 import random
 import googlemaps
-from review.forms import ReviewForm
 
 googlemaps_key = "AIzaSyCfvx6iYQVGdPer3AqofpSB-jAKnw_PoVE"
 gmaps = googlemaps.Client(key=googlemaps_key)
 
+class RestaurantDetailView(DetailView):
+    model = Restaurant
+
+@csrf_exempt
 def index(request):
     context = {
         'response': 200, 
     }
-    return render(request, 'restaurant/inputLocation.html', context)
+    return render(request, 'restaurant/restaurantList.html', context)
 
 def load_restaurants_csv(request):
     load_restaurants_csv()
@@ -50,76 +58,110 @@ def update_reviews(request):
     for r in rs:
         get_reviews(r.dong, r.name)
 
+def current_position(request):
+    context = {
+        'status':200, 
+    }
+    return render(request, 'restaurant/restaurantList.html', context)
+
 @csrf_exempt
 def get_current_coordinate(request):
-    coordinate = json.loads(request.body.decode('utf-8'))
-    current = [coordinate['user_lat'], coordinate['user_lng']]
 
-    print(current)
+    if request.method == 'POST':
 
-    rs = Restaurant.objects.all()
+        coordinate = json.loads(request.body.decode('utf-8'))
+        current = [coordinate['user_lat'], coordinate['user_lng']]
 
-    restaurants = []
+        print(current)
 
-    for r in rs:
-        destination = [r.latitude, r.hardness]
-        distance = get_distance(current, destination)
-        if check_1km(distance): 
-            restaurants.append(r)
+        rs = Restaurant.objects.all()
 
-    candidate_restaurants = []
-    top_10_restaurants = []
-    random_20_restaurants = random.sample(restaurants, 20)
+        restaurants = []
 
-    for r in random_20_restaurants:
-        try: 
-            visitor_reviews, blog_reviews = get_reviews(r.dong, r.name)
-            r.visitor_reviews = visitor_reviews
-            r.blog_reviews = blog_reviews
-            r.total_counts = visitor_reviews + blog_reviews
-            r.save()
+        for r in rs:
+            destination = [r.latitude, r.hardness]
+            distance = get_distance(current, destination)
+            if check_1km(distance): 
+                restaurants.append(r)
 
-            candidate_restaurants.append(r.pk)
+        candidate_restaurants = []
+        top_10_restaurants = []
+        random_20_restaurants = random.sample(restaurants, 20)
 
-            if (len(candidate_restaurants) == 10): 
-                break
-        except:
-            continue
-    
-    top_10_restaurants = Restaurant.objects.filter(id__in=candidate_restaurants).order_by('-total_counts')
+        for r in random_20_restaurants:
+            try: 
+                visitor_reviews, blog_reviews = get_reviews(r.dong, r.name)
+                r.visitor_reviews = visitor_reviews
+                r.blog_reviews = blog_reviews
+                r.total_counts = visitor_reviews + blog_reviews
+                r.save()
+
+                candidate_restaurants.append(r.pk)
+
+                if (len(candidate_restaurants) == 3): 
+                    break
+            except:
+                continue
+        
+        top_10_restaurants = Restaurant.objects.filter(id__in=candidate_restaurants).order_by('-total_counts')
+
+        result = ""
+        
+        for r in top_10_restaurants:
+            result += str(r.pk)
+            result += " "
+            print(result)
+        
+
+        top_10 = TOP_10_RES.objects.get(pk=1)
+
+        top_10.current = str(current[0]) + " " + str(current[1])
+        top_10.list = result 
+        
+        top_10.save()
+        
+        context = {
+            'top_10_restaurants': top_10_restaurants, 
+            'user_lat': coordinate['user_lat'], 
+            'user_lng': coordinate['user_lng'], 
+        }
+
+        return redirect('/results/')
+    else:
+        top_10 = TOP_10_RES.objects.get(pk=1)
+
+        temp = map(int, top_10.list.split(" ").pop())
+
+        top_10_restaurants = Restaurant.objects.filter(id__in=temp)
+        top_10_current = top_10.current.split(" ")
+
+        context = {
+                    'top_10_restaurants': top_10_restaurants, 
+                    'user_lat': top_10_current[0], 
+                    'user_lng': top_10_current[1], 
+        } 
+
+        print(context)
+        return render(request, 'restaurant/resultRestaurantList.html', context)
+
+def final_results(request): 
+    top_10 = TOP_10_RES.objects.get(pk=1)
+
+    temp = map(int, top_10.list.split(" ").pop())
+
+    top_10_restaurants = Restaurant.objects.filter(id__in=temp)
+    top_10_current = top_10.current.split(" ")
 
     context = {
-        'top_10_restaurants': top_10_restaurants, 
-    }
+                'top_10_restaurants': top_10_restaurants, 
+                'user_lat': top_10_current[0], 
+                'user_lng': top_10_current[1], 
+    } 
 
     print(context)
 
-    return render(request, 'restaurant/restaurantList.html', context)
+    return render(request, 'restaurant/resultRestaurantList.html', context)
 
 
-class ResList(ListView):
-    model = Restaurant
-
-    template_name = 'restaurant/myRestaurants.html'
-
-
-class ResDetail(DetailView):
-    model = Restaurant
-
-    template_name = 'restaurant/detailReview.html'
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super(ResDetail, self).get_context_data()
-        context['review_form'] = ReviewForm
-        return  context
-
-def index(request):
-    return render(request, 'restaurant/index.html')
-
-
-def myRestaurants(request):
-    return render(request, 'restaurant/myRestaurants.html')
-def Restaurantlist(request):
-    return render(request, 'restaurant/restaurantList.html')
 
 
