@@ -11,6 +11,7 @@ class Restaurant(models.Model):
     visitor_reviews = models.IntegerField(verbose_name='방문자 리뷰수')
     blog_reviews = models.IntegerField(verbose_name='블로그 리뷰수')
     total_counts = models.IntegerField(verbose_name='전체 리뷰수')
+    link = models.TextField(verbose_name="URL")
 
 class TOP_10_RES(models.Model):
     current = models.CharField(max_length=50, verbose_name='현재 위도 경도')

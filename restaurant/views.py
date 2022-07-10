@@ -20,14 +20,39 @@ import googlemaps
 googlemaps_key = "AIzaSyCfvx6iYQVGdPer3AqofpSB-jAKnw_PoVE"
 gmaps = googlemaps.Client(key=googlemaps_key)
 
+@csrf_exempt
+def index(request):
+    return render(request, 'restaurant/index.html',)
+
 class RestaurantDetailView(DetailView):
     model = Restaurant
 
-@csrf_exempt
-def index(request):
+def mypage(request):
+    return render(request, 'restaurant/mypage.html',)
+
+def restaurantList(request):
+    top_10 = TOP_10_RES.objects.get(pk=1)
+
+    list = top_10.list.split(" ")
+    list.pop()
+
+    temp = map(int, list)
+
+    top_10_restaurants = Restaurant.objects.filter(id__in=temp)
+    top_10_current = top_10.current.split(" ")
+
+                
+    print("temp: ", temp)
+
+    print("top_10:", top_10_restaurants)
+
     context = {
-        'response': 200, 
-    }
+                'top_10_restaurants': top_10_restaurants, 
+                'user_lat': top_10_current[0], 
+                'user_lng': top_10_current[1], 
+    } 
+
+    print(context)
     return render(request, 'restaurant/restaurantList.html', context)
 
 def load_restaurants_csv(request):
@@ -90,10 +115,11 @@ def get_current_coordinate(request):
 
         for r in random_20_restaurants:
             try: 
-                visitor_reviews, blog_reviews = get_reviews(r.dong, r.name)
+                visitor_reviews, blog_reviews, link = get_reviews(r.dong, r.name)
                 r.visitor_reviews = visitor_reviews
                 r.blog_reviews = blog_reviews
                 r.total_counts = visitor_reviews + blog_reviews
+                r.link = link
                 r.save()
 
                 candidate_restaurants.append(r.pk)
@@ -110,7 +136,6 @@ def get_current_coordinate(request):
         for r in top_10_restaurants:
             result += str(r.pk)
             result += " "
-            print(result)
         
 
         top_10 = TOP_10_RES.objects.get(pk=1)
@@ -130,9 +155,16 @@ def get_current_coordinate(request):
     else:
         top_10 = TOP_10_RES.objects.get(pk=1)
 
-        temp = map(int, top_10.list.split(" ").pop())
+        list = top_10.list.split(" ")
+        list.pop()
+
+        temp = map(int, list)
+
+        temp = map(int, top_10)
 
         top_10_restaurants = Restaurant.objects.filter(id__in=temp)
+
+
         top_10_current = top_10.current.split(" ")
 
         context = {
@@ -147,10 +179,18 @@ def get_current_coordinate(request):
 def final_results(request): 
     top_10 = TOP_10_RES.objects.get(pk=1)
 
-    temp = map(int, top_10.list.split(" ").pop())
+    list = top_10.list.split(" ")
+    list.pop()
+
+    temp = map(int, list)
 
     top_10_restaurants = Restaurant.objects.filter(id__in=temp)
     top_10_current = top_10.current.split(" ")
+
+                
+    print("temp: ", temp)
+
+    print("top_10:", top_10_restaurants)
 
     context = {
                 'top_10_restaurants': top_10_restaurants, 

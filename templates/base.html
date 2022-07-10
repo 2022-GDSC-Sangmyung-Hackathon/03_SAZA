@@ -10,7 +10,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
-    <link rel="stylesheet" href="resources/css/plugin/datepicker/bootstrap-datepicker.css">
     
     <link rel="stylesheet" href="/static/css/restaurant.css">
     <link rel="stylesheet" href="/static/css/base.css">
@@ -31,8 +30,8 @@
 <body>
     <nav class="navbar">
           <div class="navbar-wrap">
-            <div class="navbar-logo-img"><img src="{%static 'img/mainLogo.png' %}" onclick="location.href='/restaurantList'"></div>
-            <div class="navbar-logo-text"><img src="{%static 'img/logoText.png' %}" onclick="location.href='/restaurantList'"></div>
+            <div class="navbar-logo-img"><img src="{%static 'img/mainLogo.png' %}" onclick="location.href='/'"></div>
+            <div class="navbar-logo-text"><img src="{%static 'img/logoText.png' %}" onclick="location.href='/'"></div>
           </div>
               <div class="navbar-nav">
                   {% if user.is_authenticated %}

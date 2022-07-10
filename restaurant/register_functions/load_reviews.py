@@ -17,6 +17,8 @@ def get_reviews(dong, name):
     driver = webdriver.Chrome('restaurant/register_functions/chromedriver', options=options)
     query = dong + " " + name
     driver.get(f"https://map.naver.com/v5/search/{query}?c=14203933.7141038,4562681.4505997,10,0,0,0,dh")
+
+    link = f"https://map.naver.com/v5/search/{query}?c=14203933.7141038,4562681.4505997,10,0,0,0,dh"
     
     sleep(5)
 
@@ -36,5 +38,5 @@ def get_reviews(dong, name):
 
     print(visitor_reviews, blog_reviews)
 
-    return visitor_reviews, blog_reviews
+    return visitor_reviews, blog_reviews, link
 

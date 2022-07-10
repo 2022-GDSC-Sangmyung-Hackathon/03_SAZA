@@ -25,14 +25,14 @@ function GpsGetCurrentPosition(){
                 map: map
             });
             
-            var map = new naver.maps.Map('map', mapOptions);
+            // var map = new google.maps.Map('map', mapOptions);
 
             console.log(lat);
             console.log(lng);
             
             $.ajax({
                 type:'POST',
-                url:'',
+                url:'/get-current-coordinate/',
                 data: JSON.stringify(data),
                 success: function(json){
                     console.log('data pass success');

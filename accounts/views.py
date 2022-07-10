@@ -11,10 +11,11 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)  # 사용자 인증
             login(request, user)
-            return redirect('/restaurantList')
+            return redirect('/')
     else:
         form = SignUpForm()
     return render(request, 'accounts/signup.html', {'form': form})
 
-def findPw(request):
-    return render(request, 'accounts/FindIdPw.html')
+def findIdPassword(request):
+    return render(request, 'accounts/FindIdPw.html',)
+
